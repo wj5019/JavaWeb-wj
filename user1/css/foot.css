@@ -1,0 +1,18 @@
+@charset "UTF-8";
+#foot {
+	height:180px;
+	text-align: center;
+	font-size: 10px;
+}
+.lf {
+	float: left;
+	padding-top: 50px;
+	width:65px;
+	height:80px;
+}
+#icon1 {
+	margin-left: 270px;
+}
+#icon2 , #icon3 , #icon4 {
+	margin-left:190px;
+}

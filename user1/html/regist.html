@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>注册页面</title>
+<link rel="stylesheet" href="../css/top.css" />
+<link rel="stylesheet" href="../css/foot.css" />
+<link rel="stylesheet" href="../css/regist.css" />
+</head>
+<body>
+	<!-- 页面顶部 ：logo部分-->
+	<div id="top">
+		<img alt="图片错误" src="../image/logo.png"><span>欢迎注册</span>
+		<iframe width="420" height="60"  scrolling="yes"  frameborder=“0” src="//i.tianqi.com/index.php?c=code&id=12&icon=1&num=5&site=12"></iframe>
+		<span style="color:green; margin-top: 15px;margin-left: 100px" id="clock"></span>
+	</div>
+	<!-- 页面中部：内容部分 -->
+<div id="center">
+	<div id="context">
+		<form id="registform" action="login.html">
+			<div id="txt">
+				<p>新用户注册 
+					<span><a href="login.html">登录页面</a></span>
+				</p>
+				<div class="text">
+					<label for="uname">用户名：</label>
+					<input onblur="check_onblur_uname();" onclick="check_onclick_uname();" type="text" name="uname" id="uname" maxlength="10" placeholder="请输入用户名"  autofocus required />
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="upwd">密&nbsp;&nbsp;&nbsp;码：</label>
+					<input onblur="check_onblur_upwd();" onclick="check_onclick_upwd();" type="password" name="upwd" id="upwd" maxlength="10" placeholder="请输入密码"  autofocus required/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="email">邮&nbsp;&nbsp;&nbsp;箱：</label>
+					<input type="email" name="email" id="email" placeholder="请输入邮箱"  autofocus required/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<label for="phone">手&nbsp;&nbsp;&nbsp;机：</label>
+					<input type="text" name="phone" id="phone" placeholder="请输入手机号"  autofocus required pattern="^1(3|5|7|8)\d{9}"/>
+					<span class="errorinfo"></span>
+				</div>
+				<div class="text">
+					<input type="button" value="提交注册信息" id="bt-register" />
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+	<!-- 页面底部：广告部分 -->
+	<div id="foot">
+		<div id="icon1" class="lf">
+			<img alt="图片错误" src="../image/icon1.png">
+			<h3>品质保障</h3>
+		</div>
+		<div id="icon2" class="lf">
+			<img alt="图片错误" src="../image/icon2.png">
+			<h3>私人订制</h3>
+		</div>
+		<div id="icon3" class="lf">
+			<img alt="图片错误" src="../image/icon3.png">
+			<h3>学员特供</h3>
+		</div>
+		<div id="icon4" class="lf">
+			<img alt="图片错误" src="../image/icon4.png">
+			<h3>专属特权</h3>
+		</div>
+	</div>
+</body>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<!-- 使用js脚本进行input文本框的校验 -->
+<!-- 快捷键alt+/ -->
+<script type="text/javascript">
+/* 专门定义一个函数，用于用户名的非空校验 
+ * 当文本框失去焦点的时候，进行非空校验
+ */
+   function check_onblur_uname(){
+    //1.获取了uname文本框对象
+    var uname=document.getElementById("uname");
+    var value=uname.value;//文本框的值
+    //2.对文本框进行非空校验
+    if(value.length==0){
+    	//获取文本框后面的span元素对象
+    	uname.nextElementSibling.innerHTML="用户名不能为空";
+    	//增加错误提示的样式css
+    	uname.nextElementSibling.className="errorinfo";
+    }
+    //3.对用户名的长度校验:6-12位之间正确
+    else if(value.length<6 || value.length>12){
+    	uname.nextElementSibling.innerHTML="用户名应该为6-12位";
+    	uname.nextElementSibling.className="errorinfo";
+    }
+    else{
+    	uname.nextElementSibling.innerHTML="用户名格式正确";
+    	uname.nextElementSibling.className="errorinfo success";
+    }	
+}
+  //当鼠标聚焦到uname时添加温馨提示
+    function check_onclick_uname(){
+    var uname=document.getElementById("uname");
+    uname.nextElementSibling.innerHTML="长度在6-12之间";
+	uname.nextElementSibling.className="default";
+  }
+  
+    function check_onblur_upwd(){
+        var upwd=document.getElementById("upwd");
+        var value=upwd.value;//文本框的值
+        if(value.length==0){
+        	upwd.nextElementSibling.innerHTML="密码不能为空";
+        	upwd.nextElementSibling.className="errorinfo";
+        }
+        else if(value.length<6 || value.length>12){
+        	upwd.nextElementSibling.innerHTML="密码应该为6-12位";
+        	upwd.nextElementSibling.className="errorinfo";
+        }
+        else{
+        	upwd.nextElementSibling.innerHTML="密码格式正确";
+        	upwd.nextElementSibling.className="errorinfo success";
+        }	
+    }
+      //当鼠标聚焦到uname时添加温馨提示
+        function check_onclick_upwd(){
+        var upwd=document.getElementById("upwd");
+        upwd.nextElementSibling.innerHTML="长度在6-12之间";
+    	upwd.nextElementSibling.className="default";
+      }
+      //1.邮箱文本框的聚焦事件
+      $("#email").focus(
+    	function(){
+    		this.nextElementSibling.innerHTML="请输入合法格式";
+    		this.nextElementSibling.className="default";
+    	}	  
+      );
+      //2.邮箱文本框的失焦事件
+      $("#email").blur(
+    	function(){//使用函数处理逻辑关系
+    	//非空校验
+    	if(this.validity.valueMissing){
+    		this.nextElementSibling.innerHTML="邮箱不能为空";
+    		this.nextElementSibling.className="errorinfo";
+    	}
+    	//邮箱格式错误校验
+    	else if(this.validity.typeMismatch){
+    		this.nextElementSibling.innerHTML="邮箱格式不正确";
+    		this.nextElementSibling.className="errorinfo";
+    	}
+    	//邮箱格式正确校验
+    	else{
+    		this.nextElementSibling.innerHTML="邮箱格式正确";
+    		this.nextElementSibling.className="errorinfo success";
+    	}
+    	});
+      
+      $("#phone").focus(
+    	    	function(){
+    	    		this.nextElementSibling.innerHTML="请输入正确的手机号";
+    	    		this.nextElementSibling.className="default";
+    	    	}	  
+    	      );
+      $("#phone").blur(
+    	    	function(){//使用函数处理逻辑关系
+    	    	if(this.validity.valueMissing){
+    	    		this.nextElementSibling.innerHTML="手机号不能为空";
+    	    		this.nextElementSibling.className="errorinfo";
+    	    	}
+    	    	else if(this.validity.patternMismatch){//正则
+    	    		this.nextElementSibling.innerHTML="手机号格式不正确";
+    	    		this.nextElementSibling.className="errorinfo";
+    	    	}
+    	    	else{
+    	    		this.nextElementSibling.innerHTML="手机号格式正确";
+    	    		this.nextElementSibling.className="errorinfo success";
+    	    	}
+    	    	});
+      
+      //点击提交按钮 时
+      //循环遍历form表单中的input，如果有4个success，那么提交注册成功
+      //没有四个success不让提交
+      $("#bt-register").click(
+    	  function(){//按钮的点击时间触发的函数
+    	      var lengths=0;
+    	      $('.text').each(//遍历所有的div class="text"
+    			  function(){//判断div中的第三个儿子span元素
+    				  if($(this).find('span').hasClass('errorinfo success')){
+    					  length++
+    				  }
+    			  });
+    	  if(length==4){
+    		  alert("qqq")
+    		  $('#registform').submit();
+  
+    	  }
+      });
+    	      
+ 
+</script>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
