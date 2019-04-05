@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>day03</display-name>
+  <!--  配置servlet的收件人地址-->
+  <servlet>
+  <!-- servlet-name:程序员自定义的一个名字，意义专门用于匹配寄件人的信息 -->
+   <servlet-name>hello</servlet-name>
+   <!--  servlet-class：包名，类名  意义：请求到达的最终目标-->
+   <servlet-class>cn.tedu.javaweb.userServlet.HelloServlet</servlet-class>
+  </servlet>
+  <!-- 配置servlet的寄件人信息-->
+  <servlet-mapping>
+  <servlet-name>hello</servlet-name>
+  <!-- url:浏览器发送的请求路径 -->
+  <url-pattern>/hello</url-pattern>
+  </servlet-mapping>
+  
+  <!--  hellokitty请求-->
+  <servlet>
+  <servlet-name>hellokitty</servlet-name>
+  <servlet-class>cn.tedu.javaweb.userServlet.HelloKittyServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>hellokitty</servlet-name>
+  <url-pattern>/hellokitty</url-pattern>
+  </servlet-mapping>
+  
+    <!--  编写用户登陆请求请求-->
+  <servlet>
+  <servlet-name>userLogin</servlet-name>
+  <servlet-class>cn.tedu.javaweb.userServlet.UserLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>userLogin</servlet-name>
+  <url-pattern>/user/page/userLogin</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>userRegist</servlet-name>
+  <servlet-class>cn.tedu.javaweb.userServlet.UserRegistServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>userRegist</servlet-name>
+  <url-pattern>/user/page/userRegist</url-pattern>
+  </servlet-mapping>
+  
+  
+</web-app>
