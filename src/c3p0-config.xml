@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<c3p0-config>
+    <!-- 默认配置 -->
+   <!--  <default-config>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/mydb</property>
+        <property name="user">root</property>
+        <property name="password">admin</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        
+        <property name="initialPoolSize">5</property>
+        <property name="maxPoolSize">8</property>
+        <property name="checkoutTimeout">3000</property>
+        
+    </default-config> -->
+
+    <!-- mysql的连接配置 -->
+    <named-config name="mysql">
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/teduweb </property>
+        <property name="user">root</property>
+        <property name="password">12345678</property>
+        <property name="driverClass">com.mysql.jdbc.Driver</property>
+        
+        <property name="initialPoolSize">15</property>
+        <property name="maxPoolSize">8</property>
+        <property name="checkoutTimeout">3000</property>    
+    </named-config>
+    
+    <!-- 使用 oracal就会用这份配置-->
+    <!-- 也可以写其他数据库的配置 -->
+
+</c3p0-config>
