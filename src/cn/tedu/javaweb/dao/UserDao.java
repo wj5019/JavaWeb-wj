@@ -10,6 +10,7 @@ import java.util.Scanner;
 import com.sun.xml.internal.ws.api.pipe.NextAction;
 
 import cn.tedu.javaweb.pojo.User;
+import cn.tedu.javaweb.utils.C3P0;
 import cn.tedu.javaweb.utils.JDBC;
 
 //专门用于数据库的表操作(CRUD、增删改查)
@@ -131,14 +132,86 @@ public class UserDao {
 	}
 	
 	
+	//ajax校验用户名，返回值类型是boolean类型，判断该用户是否存在
+	public boolean ajaxCheckUname(String uname) {
+		//定义一个boolean类型判断用户名
+		boolean flag=false;
+		///////////////////JDBC:C3P0/////////////////////////////
+		Connection conn=C3P0.getConnection();
+		String sql="select * from t_user where uname=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			//赋值
+			ps.setString(1, uname);
+			//结果集
+			ResultSet rs=ps.executeQuery();
+			if (rs.next()) {//如果存在一条记录，那么证明该用户已存在
+				flag=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//返回一个boolean类型
+		return flag;
+	}
+	
+	public boolean ajaxCheckEmail(String email) {
+		//定义一个boolean类型判断邮箱
+		boolean flag=false;
+		///////////////////JDBC:C3P0/////////////////////////////
+		Connection conn=C3P0.getConnection();
+		String sql="select * from t_user where email=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			//赋值
+			ps.setString(1, email);
+			//结果集
+			ResultSet rs=ps.executeQuery();
+			if (rs.next()) {//如果存在一条记录，那么证明该用户已存在
+				flag=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//返回一个boolean类型
+		return flag;
+	}
+	
+	public boolean ajaxCheckPhone(String phone) {
+		//定义一个boolean类型判断手机号
+		boolean flag=false;
+		///////////////////JDBC:C3P0/////////////////////////////
+		Connection conn=C3P0.getConnection();
+		String sql="select * from t_user where phone=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(sql);
+			//赋值
+			ps.setString(1, phone);
+			//结果集
+			ResultSet rs=ps.executeQuery();
+			if (rs.next()) {//如果存在一条记录，那么证明该用户已存在
+				flag=true;
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//返回一个boolean类型
+		return flag;
+	}
 	public static void main(String[] args){
 		UserDao dao=new UserDao();
 //	    dao.selectALL();
 //	    dao.insert("ssss", "马云", "123", "659qq@.com", 0);
 //	    dao.update("00000000000", "12345678900");
 //	    dao.delete("12345678901");
-		User user=dao.selectByUnameAndUpwd("麻花疼111", "12345678");
-		System.out.println(user);
+//		User user=dao.selectByUnameAndUpwd("麻花疼111", "12345678");
+//		System.out.println(user);
+		boolean flag=dao.ajaxCheckUname("qqqqq");
+		System.out.println(flag);
+				
 	}
 }
 
